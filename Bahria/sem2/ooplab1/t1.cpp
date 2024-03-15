@@ -31,21 +31,21 @@ class Person
     Person(string n = "", int a = 0) : name(n), age(a) {}
 
    void displayDetails()
-   {
-        cout <<"-----------------------------------" << endl;
-        cout << "Name: " << name << ", Age: " << age << endl << endl;
-        if (!pet.empty())
-        {
-          for(const Dog& d : pet)
-          {
-             d.bark(); 
-           }
-         }
-        cout <<"-----------------------------------" << endl;
+  {
+    cout <<"-----------------------------------" << endl;
+    cout << "Name: " << name << ", Age: " << age << endl << endl;
+    if (!pet.empty())
+    {
+      for(Dog& d : pet) // Remove const qualifier from the range-based for loop variable declaration
+      {
+        d.bark(); 
+      }
+    }
+    cout <<"-----------------------------------" << endl;
 
-        cout << endl;
+    cout << endl;
 
-        }
+  }
 };
 
 class house
@@ -93,10 +93,9 @@ class house
       }
       void peopledetailoutput()
       {
-        for (const auto& person : people)
-         {
-            person.displayDetails();
-
+        for (auto& person : people)
+        {
+          person.displayDetails();
         }
       }
 };
@@ -116,6 +115,6 @@ int main()
     h1.peopledetailinput();
     h1.peopledetailoutput();
 
-cout << "hello world";
+
 
 }
