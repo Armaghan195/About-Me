@@ -116,6 +116,6 @@ int main()
     h1.peopledetailinput();
     h1.peopledetailoutput();
 
-
+cout << "hello world";
 
 }
