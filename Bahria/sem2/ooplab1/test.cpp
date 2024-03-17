@@ -31,21 +31,20 @@ class Person
     Person(string n = "", int a = 0) : name(n), age(a) {}
 
    void displayDetails()
-   {
-        cout <<"-----------------------------------" << endl;
-        cout << "Name: " << name << ", Age: " << age << endl << endl;
-        if (!pet.empty())
-        {
-          for(const Dog& d : pet)
-          {
-             d.bark(); 
-           }
-         }
-        cout <<"-----------------------------------" << endl;
+  {
+    cout <<"-----------------------------------" << endl;
+    cout << "Name: " << name << ", Age: " << age << endl << endl;
+    if (!pet.empty())
+    {
+      for(Dog& d : pet) // Remove the const qualifier
+      {
+        d.bark(); 
+      }
+    }
+    cout <<"-----------------------------------" << endl;
 
-        cout << endl;
-
-        }
+    cout << endl;
+  }
 };
 
 class house
@@ -93,10 +92,9 @@ class house
       }
       void peopledetailoutput()
       {
-        for (const auto& person : people)
-         {
-            person.displayDetails();
-
+        for (auto& person : people)
+        {
+          person.displayDetails();
         }
       }
 };
